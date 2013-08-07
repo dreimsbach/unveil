@@ -14,7 +14,7 @@ var
 		"callback":logHandler
 	};
 
-$("li img").unveil(options);
+$("img").unveil(options);
 ```
 
 Click [here] (http://htmlpreview.github.io/?https://github.com/dreimsbach/unveil/blob/master/index.html) for a demo.
