@@ -7,12 +7,12 @@ Modified version of the original Plugin by plugin by [Luís Almeida](https://git
 ```javascript
 var 
   logHandler = function() {
-		console.log($(this).attr("src") + " loaded");
-	},
-	options = {
-		"threshold": 300, 
-		"callback":logHandler
-	};
+    console.log($(this).attr("src") + " loaded");
+  },
+  options = {
+    "threshold": 300, 
+    "callback":logHandler
+  };
 
 $("img").unveil(options);
 ```
