@@ -6,14 +6,19 @@
  * Licensed under the MIT license.
  * Copyright 2013 Luís Almeida
  * https://github.com/luis-almeida
+ *
+ * Modified: Added a callback function
+ * Copyright 2013 Dirk Reimsbach
+ * https://github.com/dreimsbach
  */
 
 ;(function($) {
 
-  $.fn.unveil = function(threshold) {
+  $.fn.unveil = function(options) {
 
     var $w = $(window),
-        th = threshold || 0,
+        options = options || {},
+        th = options.threshold || 0,
         retina = window.devicePixelRatio > 1,
         attrib = retina? "data-src-retina" : "data-src",
         images = this,
@@ -24,7 +29,10 @@
     this.one("unveil", function() {
       source = this.getAttribute(attrib);
       source = source || this.getAttribute("data-src");
-      if (source) this.setAttribute("src", source);
+      if (source) {
+        this.setAttribute("src", source);
+        if (typeof options.callback === 'function') options.callback.apply(this);
+      }
     });
 
     function unveil() {
